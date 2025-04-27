@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Fitness</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #222;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+            color: #ffcc00;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+        .banner {
+            text-align: center;
+            padding: 100px 20px;
+            background: url('gym-banner.jpg') no-repeat center center/cover;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ffcc00;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .login{
+            display: inline-block;
+            padding: 10px 20px;
+            background: #ffcc00;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        #services, #trainers, #contact {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .service-box, .trainer {
+            background: #222;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 250px;
+        }
+        .service-box img, .trainer img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+ /* Slider Container */
+        .slider {
+    position: relative;
+    width: 60%; /* Reduce width to 60% of the screen */
+    height: 350px; /* Adjust height as needed */
+    margin: 50px auto; /* Centers the slider */
+    overflow: hidden;
+    border-radius: 15px; /* Optional: Adds rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Optional: Adds shadow */
+}
+
+/* Slider Images */
+.slider img {
+    width: 100%; /* Ensures images fill the slider container */
+    height: 100%;
+    object-fit: cover; /* Prevents distortion */
+    display: none;
+    border-radius: 15px; /* Optional: Matches container's rounded corners */
+}
+        .slider img.active {
+            display: block;
+        }
+        /* Navigation Arrows */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FitLife Gym</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#trainers">Trainers</a></li>
+                <a href="./login.php" class="login">Login</a>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Image Slider -->
+    <section class="slider">
+        <img src="./images/slide-one.jpg" class="active" alt="Gym Interior">
+        <img src="./images/slide-two.jpg" alt="Workout Area">
+        <img src="./images/slide-three.jpg" alt="Cardio Section">
+        <img src="./images/slide-four.jpg" alt="Weight Training">
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+    </section>
+
+    <script>
+        let index = 0;
+        const slides = document.querySelectorAll('.slider img');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+        }
+
+        function nextSlide() {
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        }
+
+        function prevSlide() {
+            index = (index - 1 + slides.length) % slides.length;
+            showSlide(index);
+        }
+
+        setInterval(nextSlide, 3000); // Auto slide every 3 seconds
+    </script>
+
+    
+    <section id="home" class="banner">
+        <h2>Transform Your Body, Transform Your Life</h2>
+        <p>Join FitLife Gym today for a healthier tomorrow!</p>
+        <a href="./register.php" class="btn">Join Now</a>
+    </section>
+    
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="service-box">
+            <img src="./images/personal-training.jpg" alt="Personal Training">
+            <h3>Personal Training</h3>
+            <p>Get one-on-one coaching from certified trainers.</p>
+        </div>
+        <div class="service-box">
+            <img src="./images/cardio.jpg" alt="Cardio Sessions">
+            <h3>Cardio Sessions</h3>
+            <p>Boost your stamina with our top-notch cardio equipment.</p>
+        </div>
+        <div class="service-box">
+            <img src="./images/yoga.jpg" alt="Yoga & Meditation">
+            <h3>Yoga & Meditation</h3>
+            <p>Relax and rejuvenate with our special yoga sessions.</p>
+        </div>
+    </section>
+    
+    <section id="trainers">
+        <h2>Meet Our Trainers</h2>
+        <div class="trainer">
+            <img src="./images/trainer1.jpg" alt="Trainer John Doe">
+            <h3>John Doe</h3>
+            <p>Expert in strength training and nutrition.</p>
+        </div>
+        <div class="trainer">
+            <img src="./images/trainer2.jpg" alt="Trainer Jane Smith">
+            <h3>Jane Smith</h3>
+            <p>Specialist in cardio workouts and weight loss.</p>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@fitlifegym.com</p>
+        <p>Phone: +91 9876543210</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 FitLife Gym. All rights reserved.</p>
+    </footer>
+</body>
+</html>
